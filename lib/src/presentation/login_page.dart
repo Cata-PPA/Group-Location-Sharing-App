@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:group_gps_chat_app/src/actions/index.dart';
 import 'package:group_gps_chat_app/src/models/index.dart';
@@ -67,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                     if (value == null || value.length < 6) {
                       return 'Password must contain at least 6 characters';
                     }
+                    return null;
                   },
                 ),
                 const Spacer(),

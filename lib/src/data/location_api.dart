@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:group_gps_chat_app/src/models/index.dart';
 import 'package:location/location.dart';
-import 'package:rxdart/transformers.dart';
+
 
 class LocationApi {
   const LocationApi({required this.location, required this.firestore});

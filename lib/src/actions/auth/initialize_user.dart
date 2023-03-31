@@ -8,6 +8,3 @@ class InitializeUser with _$InitializeUser {
 
   const factory InitializeUser.error(Object error, StackTrace stackTrace) = InitializeUserError;
 }
-
-
-

@@ -1,4 +1,3 @@
-import 'package:group_gps_chat_app/src/actions/index.dart';
 import 'package:group_gps_chat_app/src/data/auth_api.dart';
 import 'package:group_gps_chat_app/src/data/location_api.dart';
 import 'package:group_gps_chat_app/src/epics/auth_epics.dart';

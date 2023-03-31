@@ -21,6 +21,3 @@ AuthState _createUserSuccessful(AuthState state, CreateUserSuccessful action) {
 AuthState _loginSuccessful (AuthState state, LoginSuccessful action) {
   return state.copyWith(user: action.user);
 }
-
-
-

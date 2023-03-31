@@ -6,7 +6,7 @@ class UserLocation with _$UserLocation {
     required String uid,
     required double lat,
     required double lng,
-}) = UserLocation$;
+  }) = UserLocation$;
 
   factory UserLocation.fromJson(Map<dynamic, dynamic> json) => _$UserLocationFromJson(Map<String, dynamic>.from(json));
 }

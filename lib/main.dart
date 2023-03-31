@@ -21,7 +21,6 @@ import 'package:redux_epics/redux_epics.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final AuthApi authApi = AuthApi(auth: FirebaseAuth.instance);
@@ -35,18 +34,16 @@ Future<void> main() async {
     initialState: const AppState(),
     middleware: <Middleware<AppState>>[
       EpicMiddleware<AppState>(epics.epic),
-      (Store<AppState> store, dynamic action, NextDispatcher next){
-      next(action);
-      controller.add(action);
-
+      (Store<AppState> store, dynamic action, NextDispatcher next) {
+        next(action);
+        controller.add(action);
       }
     ],
   )..dispatch(const InitializeUserStart());
 
   await controller.stream
       .where((dynamic action) => action is InitializeUserSuccessful || action is InitializeUserError)
-  .first;
-
+      .first;
 
   runApp(GroupApp(store: store));
 }

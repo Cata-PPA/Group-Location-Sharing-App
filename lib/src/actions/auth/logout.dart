@@ -1,7 +1,7 @@
 part of actions;
 
 @freezed
-class Logout with _$Logout  {
+class Logout with _$Logout {
   const factory Logout() = LogoutStart;
 
   const factory Logout.successful() = LogoutSuccessful;

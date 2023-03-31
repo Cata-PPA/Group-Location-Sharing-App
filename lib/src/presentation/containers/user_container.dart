@@ -14,7 +14,7 @@ class UserContainer extends StatelessWidget {
       converter: (Store<AppState> store) {
         return store.state.auth.user;
       },
-        builder: builder,
-        );
+      builder: builder,
+    );
   }
 }

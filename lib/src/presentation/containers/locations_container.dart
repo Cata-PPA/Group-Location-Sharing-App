@@ -14,7 +14,7 @@ class LocationsContainer extends StatelessWidget {
       converter: (Store<AppState> store) {
         return store.state.location.locations;
       },
-        builder: builder,
-        );
+      builder: builder,
+    );
   }
 }

@@ -16,16 +16,15 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   void _onResponse(dynamic action) {
-
-    if(action is CreateUserError){
+    if (action is CreateUserError) {
       final Object error = action.error;
       if (error is FirebaseAuthException) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.message??error.code)));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.message ?? error.code)));
       }
     } else if (action is LoginError) {
       final Object error = action.error;
       if (error is FirebaseAuthException) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.message??error.code)));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.message ?? error.code)));
       }
     }
   }
@@ -81,8 +80,10 @@ class _LoginPageState extends State<LoginPage> {
                               if (!Form.of(context).validate()) {
                                 return;
                               } else {
-                                final Login action =
-                                    Login(email: _emailController.text, password: _passwordController.text, response: _onResponse);
+                                final Login action = Login(
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                    response: _onResponse);
                                 StoreProvider.of<AppState>(context).dispatch(action);
                               }
                             },
@@ -96,8 +97,10 @@ class _LoginPageState extends State<LoginPage> {
                               if (!Form.of(context).validate()) {
                                 return;
                               } else {
-                                final CreateUser action =
-                                    CreateUser(email: _emailController.text, password: _passwordController.text, response: _onResponse);
+                                final CreateUser action = CreateUser(
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                    response: _onResponse);
                                 StoreProvider.of<AppState>(context).dispatch(action);
                               }
                             },
@@ -113,9 +116,5 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-    
-    
   }
-
-
 }

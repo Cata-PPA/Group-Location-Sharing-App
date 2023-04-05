@@ -11,10 +11,10 @@ class LocationsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, List<UserLocation>>(
+      builder: builder,
       converter: (Store<AppState> store) {
         return store.state.location.locations;
       },
-      builder: builder,
     );
   }
 }

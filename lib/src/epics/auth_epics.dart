@@ -15,17 +15,18 @@ class AuthEpics {
       TypedEpic<AppState, LoginStart>(_loginStart),
       TypedEpic<AppState, LogoutStart>(_logoutStart),
       TypedEpic<AppState, InitializeUserStart>(_initializeUserStart),
+      listenForUsersStart,
     ]);
   }
 
   Stream<dynamic> _loginStart(Stream<LoginStart> actions, EpicStore<AppState> store) {
-    return actions.flatMap((LoginStart action) {
-      return Stream<void>.value(null)
+    return actions.flatMap(
+      (LoginStart action) => Stream<void>.value(null)
           .asyncMap((_) => _api.login(email: action.email, password: action.password))
           .map((AppUser user) => Login.successful(user))
           .onErrorReturnWith((Object error, StackTrace stackTrace) => Login.error(error, stackTrace))
-          .doOnData(action.response);
-    });
+          .doOnData(action.response),
+    );
   }
 
   Stream<dynamic> _logoutStart(Stream<LogoutStart> actions, EpicStore<AppState> store) {
@@ -48,11 +49,21 @@ class AuthEpics {
   }
 
   Stream<void> _initializeUserStart(Stream<InitializeUserStart> actions, EpicStore<AppState> store) {
-    return actions.flatMap((InitializeUserStart action) {
-      return Stream<void>.value(null)
+    return actions.flatMap(
+      (InitializeUserStart action) => Stream<void>.value(null)
           .asyncMap((_) => _api.getUser())
           .map((AppUser? user) => InitializeUser.successful(user))
-          .onErrorReturnWith((Object error, StackTrace stackTrace) => InitializeUser.error(error, stackTrace));
-    });
+          .onErrorReturnWith((Object error, StackTrace stackTrace) => InitializeUser.error(error, stackTrace)),
+    );
+  }
+
+  Stream<dynamic> listenForUsersStart(Stream<dynamic> actions, EpicStore<AppState> store) {
+    return actions.whereType<ListenForLocationsStart>().flatMap(
+          (ListenForLocationsStart action) => Stream<void>.value(null)
+              .flatMap((_) => _api.getUsers())
+              .map((List<AppUser> users) => ListenForUsers.event(users))
+              .takeUntil(actions.whereType<ListenForLocationsDone>())
+              .onErrorReturnWith((Object error, StackTrace stackTrace) => ListenForUsers.error(error, stackTrace)),
+        );
   }
 }

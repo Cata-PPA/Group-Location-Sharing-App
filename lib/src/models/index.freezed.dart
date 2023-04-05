@@ -199,6 +199,7 @@ AuthState _$AuthStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AuthState {
   AppUser? get user => throw _privateConstructorUsedError;
+  List<AppUser> get users => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -211,7 +212,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({AppUser? user});
+  $Res call({AppUser? user, List<AppUser> users});
 
   $AppUserCopyWith<$Res>? get user;
 }
@@ -230,12 +231,17 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? user = freezed,
+    Object? users = null,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as AppUser?,
+      users: null == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<AppUser>,
     ) as $Val);
   }
 
@@ -259,7 +265,7 @@ abstract class _$$AuthState$CopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$AuthState$CopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AppUser? user});
+  $Res call({AppUser? user, List<AppUser> users});
 
   @override
   $AppUserCopyWith<$Res>? get user;
@@ -277,12 +283,17 @@ class __$$AuthState$CopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = freezed,
+    Object? users = null,
   }) {
     return _then(_$AuthState$(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as AppUser?,
+      users: null == users
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<AppUser>,
     ));
   }
 }
@@ -290,17 +301,26 @@ class __$$AuthState$CopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AuthState$ implements AuthState$ {
-  const _$AuthState$({this.user});
+  const _$AuthState$({this.user, final List<AppUser> users = const <AppUser>[]})
+      : _users = users;
 
   factory _$AuthState$.fromJson(Map<String, dynamic> json) =>
       _$$AuthState$FromJson(json);
 
   @override
   final AppUser? user;
+  final List<AppUser> _users;
+  @override
+  @JsonKey()
+  List<AppUser> get users {
+    if (_users is EqualUnmodifiableListView) return _users;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_users);
+  }
 
   @override
   String toString() {
-    return 'AuthState(user: $user)';
+    return 'AuthState(user: $user, users: $users)';
   }
 
   @override
@@ -308,12 +328,14 @@ class _$AuthState$ implements AuthState$ {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthState$ &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(
+      runtimeType, user, const DeepCollectionEquality().hash(_users));
 
   @JsonKey(ignore: true)
   @override
@@ -330,13 +352,16 @@ class _$AuthState$ implements AuthState$ {
 }
 
 abstract class AuthState$ implements AuthState {
-  const factory AuthState$({final AppUser? user}) = _$AuthState$;
+  const factory AuthState$({final AppUser? user, final List<AppUser> users}) =
+      _$AuthState$;
 
   factory AuthState$.fromJson(Map<String, dynamic> json) =
       _$AuthState$.fromJson;
 
   @override
   AppUser? get user;
+  @override
+  List<AppUser> get users;
   @override
   @JsonKey(ignore: true)
   _$$AuthState$CopyWith<_$AuthState$> get copyWith =>

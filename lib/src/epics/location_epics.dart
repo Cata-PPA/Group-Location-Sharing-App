@@ -28,14 +28,12 @@ class LocationEpics {
   }
 
   Stream<dynamic> _listenForLocationStart(Stream<dynamic> actions, EpicStore<AppState> store) {
-    return actions //
-        .whereType<ListenForLocationsStart>()
-        .flatMap((ListenForLocationsStart action) {
-      return Stream<void>.value(null)
+    return actions.whereType<ListenForLocationsStart>().flatMap(
+          (ListenForLocationsStart action) => Stream<void>.value(null)
           .flatMap((_) => _api.listenForLocations())
           .map((List<UserLocation> locations) => ListenForLocations.event(locations))
           .takeUntil(actions.whereType<ListenForLocationsDone>())
-          .onErrorReturnWith((Object error, StackTrace stackTrace) => ListenForLocations.error(error, stackTrace));
-    });
+          .onErrorReturnWith((Object error, StackTrace stackTrace) => ListenForLocations.error(error, stackTrace)),
+    );
   }
 }

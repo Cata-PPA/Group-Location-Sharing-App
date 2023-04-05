@@ -7,6 +7,8 @@ part 'auth/create_user.dart';
 
 part 'auth/initialize_user.dart';
 
+part 'auth/listen_for_users.dart';
+
 part 'auth/login.dart';
 
 part 'auth/logout.dart';

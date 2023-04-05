@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Center(child: Text('Login')),
       ),
       body: SafeArea(
         child: Padding(
@@ -45,11 +45,11 @@ class _LoginPageState extends State<LoginPage> {
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
-                    labelText: 'email',
+                    labelText: 'Email',
                   ),
                   validator: (String? value) {
                     if (value == null || !value.contains('@')) {
-                      return 'Not a valid email address';
+                      return 'This is not a valid email address';
                     }
                     return null;
                   },
@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: _passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
-                    labelText: 'password',
+                    labelText: 'Password',
                   ),
                   validator: (String? value) {
                     if (value == null || value.length < 6) {
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: <Widget>[
                         Expanded(
                           child: ElevatedButton(
-                            child: const Text('login'),
+                            child: const Text('Login'),
                             onPressed: () {
                               if (!Form.of(context).validate()) {
                                 return;

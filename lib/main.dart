@@ -12,7 +12,7 @@ import 'package:group_gps_chat_app/src/data/location_api.dart';
 import 'package:group_gps_chat_app/src/epics/app_epics.dart';
 import 'package:group_gps_chat_app/src/models/index.dart';
 import 'package:group_gps_chat_app/src/presentation/chat_page.dart';
-import 'package:group_gps_chat_app/src/presentation/containers/home.dart';
+import 'package:group_gps_chat_app/src/presentation/home.dart';
 import 'package:group_gps_chat_app/src/reducer/reducer.dart';
 import 'package:location/location.dart';
 import 'package:redux/redux.dart';
@@ -23,7 +23,7 @@ Future<void> main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  final AuthApi authApi = AuthApi(auth: FirebaseAuth.instance);
+  final AuthApi authApi = AuthApi(auth: FirebaseAuth.instance, firestore: FirebaseFirestore.instance);
   final LocationApi locationApi = LocationApi(location: Location(), firestore: FirebaseFirestore.instance);
   final AppEpics epics = AppEpics(authApi: authApi, locationApi: locationApi);
 

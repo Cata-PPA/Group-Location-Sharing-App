@@ -10,7 +10,6 @@ import 'package:group_gps_chat_app/src/presentation/containers/users_container.d
 import 'package:latlong2/latlong.dart';
 import 'package:redux/redux.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -35,8 +34,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    _store..dispatch(const ListenForLocations.done())
-    ..dispatch(const ListenForUsers.done());
+    _store
+      ..dispatch(const ListenForLocations.done())
+      ..dispatch(const ListenForUsers.done());
     super.dispose();
   }
 

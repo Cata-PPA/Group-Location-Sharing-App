@@ -7,7 +7,6 @@ Reducer<AuthState> authReducer = combineReducers(<Reducer<AuthState>>[
   TypedReducer<AuthState, InitializeUserSuccessful>(_initializeUserSuccessful),
   TypedReducer<AuthState, LoginSuccessful>(_loginSuccessful),
   TypedReducer<AuthState, OnUsersEvent>(_onUserEvent),
-
 ]);
 
 AuthState _initializeUserSuccessful(AuthState state, InitializeUserSuccessful action) {

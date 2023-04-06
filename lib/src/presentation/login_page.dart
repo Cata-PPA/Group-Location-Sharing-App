@@ -81,9 +81,10 @@ class _LoginPageState extends State<LoginPage> {
                                 return;
                               } else {
                                 final Login action = Login(
-                                    email: _emailController.text,
-                                    password: _passwordController.text,
-                                    response: _onResponse);
+                                  email: _emailController.text,
+                                  password: _passwordController.text,
+                                  response: _onResponse,
+                                );
                                 StoreProvider.of<AppState>(context).dispatch(action);
                               }
                             },
@@ -98,9 +99,10 @@ class _LoginPageState extends State<LoginPage> {
                                 return;
                               } else {
                                 final CreateUser action = CreateUser(
-                                    email: _emailController.text,
-                                    password: _passwordController.text,
-                                    response: _onResponse);
+                                  email: _emailController.text,
+                                  password: _passwordController.text,
+                                  response: _onResponse,
+                                );
                                 StoreProvider.of<AppState>(context).dispatch(action);
                               }
                             },

@@ -7,7 +7,7 @@ Used Redux for state management architecture
 
 Github workflow quality check for good code practice (details can be seen in Actions tab)
 
-
+Dart Freezed package - code generator for data-classes/unions/pattern-matching/cloning.
 ## Tech stack 
 
 **Client:** Flutter, Redux

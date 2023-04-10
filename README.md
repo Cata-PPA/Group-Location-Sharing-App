@@ -1,16 +1,26 @@
-# group_gps_chat_app
 
-A new Flutter project.
+# Group Location Sharing App
 
-## Getting Started
+Project done in Flutter, using Firestore and Firebase authentication plugins. Members of a group are added and can share their location. 
 
-This project is a starting point for a Flutter application.
+Used Redux for state management architecture
 
-A few resources to get you started if this is your first Flutter project:
+Github workflow quality check for good code practice (details can be seen in Actions tab)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tech stack 
+
+**Client:** Flutter, Redux
+
+**Server:** Cloud Firestore
+
+
+## Working Demo
+
+![ezgif com-crop](https://user-images.githubusercontent.com/60811662/230896140-cff3fc9a-6258-4e88-8c59-707c10c3c41b.gif)
+
+
+## Appendix
+
+The app can be improved by updating with a better UI and chat feature.
+

@@ -17,7 +17,8 @@ Dart Freezed package - code generator for data-classes/unions/pattern-matching/c
 
 ## Working Demo
 
-![ezgif com-crop](https://user-images.githubusercontent.com/60811662/230896140-cff3fc9a-6258-4e88-8c59-707c10c3c41b.gif)
+![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/60811662/231006269-2edf4169-6cc6-48c5-8963-d06237c83c88.gif)
+
 
 
 ## Appendix

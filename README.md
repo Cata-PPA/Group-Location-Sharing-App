@@ -5,7 +5,7 @@ Project done in Flutter, using Firestore and Firebase authentication plugins. Me
 
 Used Redux for state management architecture
 
-Github workflow quality check for good code practice (details can be seen in Actions tab)
+Github Actions using Gradle for quality check for good code practice (details can be seen in Actions tab)
 
 Dart Freezed package - code generator for data-classes/unions/pattern-matching/cloning.
 ## Tech stack 
